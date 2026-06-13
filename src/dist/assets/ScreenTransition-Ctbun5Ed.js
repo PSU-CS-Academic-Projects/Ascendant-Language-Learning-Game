@@ -1,0 +1,1 @@
+import{j as a,m as n}from"./index-YRbH5Cpt.js";const e={initial:{opacity:0},animate:{opacity:1},exit:{opacity:0}};function s({children:i,className:t=""}){return a.jsx(n.div,{variants:e,initial:"initial",animate:"animate",exit:"exit",transition:{duration:.35,ease:"easeInOut"},className:`w-full h-full ${t}`,children:i})}export{s as S};

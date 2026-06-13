@@ -1,0 +1,1 @@
+import{p as t}from"./middleware-COhbb1X6.js";import{c as a}from"./react-BXuVt-J2.js";const d=a(t(e=>({activeMode:null,setMode:o=>e({activeMode:o}),clearMode:()=>e({activeMode:null})}),{name:"lq_mode"}));export{d as u};

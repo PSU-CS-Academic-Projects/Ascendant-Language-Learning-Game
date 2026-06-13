@@ -1,0 +1,51 @@
+[
+  {
+    "id": "es_bandit",
+    "name": "Jungle Bandit",
+    "name_target": "Bandido de la Selva",
+    "tier": "regular",
+    "floor": 1,
+    "hp": 30,
+    "base_attack": 5,
+    "intent_pattern": [
+      ["strike"],
+      ["self_buff_armor_up"]
+    ],
+    "wrong_answer_buffs": {
+      "vocabulary": { "type": "confusion", "duration": 1 },
+      "grammar": { "type": "confusion", "duration": 1 },
+      "reading": { "type": "confusion", "duration": 1 }
+    }
+  },
+  {
+    "id": "es_boss",
+    "name": "Jaguar Spirit",
+    "name_target": "Espíritu Jaguar",
+    "tier": "boss",
+    "floor": 1,
+    "hp": 100,
+    "base_attack": 8,
+    "intent_pattern": [
+      ["strike"],
+      ["debuff_silence"]
+    ],
+    "wrong_answer_buffs": {
+      "vocabulary": { "type": "confusion", "duration": 1 },
+      "grammar": { "type": "confusion", "duration": 1 },
+      "reading": { "type": "confusion", "duration": 1 }
+    },
+    "phases": [
+      { "phase": 1, "hp_threshold": 100 },
+      { "phase": 2, "hp_threshold": 50 }
+    ],
+    "defeat_dialogue": "El camino termina aquí.",
+    "defeat_dialogue_translation": "The path ends here.",
+    "defeat_choices": [
+      {
+        "text": "Tomar la Piedra",
+        "translation": "Take the Stone",
+        "reward": { "type": "card", "rarity": "uncommon" }
+      }
+    ]
+  }
+]
