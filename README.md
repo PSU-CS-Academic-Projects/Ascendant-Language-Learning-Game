@@ -84,7 +84,7 @@ npm run dev
 
 ## Screenshots
 
-> Upload your screenshots inside the `screenshots/` folder and reference them here.
+
 
 **1. Main Menu**
 *The starting screen where players can begin a run or enter custom campaign codes.*
