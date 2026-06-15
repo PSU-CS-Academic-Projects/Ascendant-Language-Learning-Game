@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import useRunStore from '../../stores/runStore.js'
+import useAccountStore from '../../stores/accountStore.js'
 
 export function DebugPanel() {
   const [open, setOpen] = useState(false)
@@ -335,6 +336,29 @@ export function DebugPanel() {
           {/* ═══ MISC TAB ═══ */}
           {tab === 'misc' && (
             <>
+              <Section title="Dummy Accounts">
+                <div className="flex flex-wrap gap-1.5">
+                  <DebugBtn label="Switch to Dummy Teacher" onClick={() => {
+                    const acctStore = useAccountStore.getState()
+                    const registered = acctStore.register({ username: 'dummy_teacher', password: 'password', displayName: 'Dummy Teacher', accountType: 'teacher', email: 'teacher@dummy.edu' })
+                    if (!registered) acctStore.loginUser({ username: 'dummy_teacher', password: 'password' })
+                    navigate('/')
+                    setOpen(false)
+                  }} />
+                  <DebugBtn label="Switch to Dummy Student" onClick={() => {
+                    const acctStore = useAccountStore.getState()
+                    const registered = acctStore.register({ username: 'dummy_student', password: 'password', displayName: 'Dummy Student', accountType: 'student' })
+                    if (!registered) acctStore.loginUser({ username: 'dummy_student', password: 'password' })
+                    navigate('/')
+                    setOpen(false)
+                  }} />
+                  <DebugBtn label="Log Out Account" color="red" onClick={() => {
+                    useAccountStore.getState().logoutUser()
+                    navigate('/')
+                    setOpen(false)
+                  }} />
+                </div>
+              </Section>
               <Section title="State Management">
                 <div className="flex flex-wrap gap-1.5">
                   <DebugBtn label="Clear All Debuffs" onClick={() => useRunStore.setState({ activePlayerDebuffs: [], activeEnemyBuffs: [] })} />
