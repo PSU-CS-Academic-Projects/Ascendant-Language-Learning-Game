@@ -82,9 +82,7 @@ npm run dev
 
 ---
 
-## Screenshots
-
-
+### Screenshots
 
 **1. Main Menu**
 *The starting screen where players can begin a run or enter custom campaign codes.*
