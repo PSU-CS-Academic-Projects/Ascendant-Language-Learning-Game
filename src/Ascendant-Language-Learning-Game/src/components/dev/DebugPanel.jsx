@@ -5,6 +5,9 @@ import { useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import useRunStore from '../../stores/runStore.js'
 import useAccountStore from '../../stores/accountStore.js'
+import useGraveyardStore from '../../stores/graveyardStore.js'
+import useProgressStore from '../../stores/progressStore.js'
+import usePantheonStore from '../../stores/pantheonStore.js'
 
 export function DebugPanel() {
   const [open, setOpen] = useState(false)
@@ -349,6 +352,42 @@ export function DebugPanel() {
                     const acctStore = useAccountStore.getState()
                     const registered = acctStore.register({ username: 'dummy_student', password: 'password', displayName: 'Dummy Student', accountType: 'student' })
                     if (!registered) acctStore.loginUser({ username: 'dummy_student', password: 'password' })
+                    navigate('/')
+                    setOpen(false)
+                  }} />
+                  <DebugBtn label="Realistic Dummy Student" onClick={() => {
+                    const acctStore = useAccountStore.getState()
+                    const registered = acctStore.register({ username: 'realistic_student', password: 'password', displayName: 'Realistic Student', accountType: 'student' })
+                    if (!registered) acctStore.loginUser({ username: 'realistic_student', password: 'password' })
+                    
+                    useGraveyardStore.setState({
+                      entries: {
+                        "q_vocab_taberu": { label: "食べる", reading: "taberu", wrongCount: 14, correctStreak: 1, mastered: false, lastSeen: Date.now() - 3600000 },
+                        "q_vocab_nomu": { label: "飲む", reading: "nomu", wrongCount: 8, correctStreak: 2, mastered: false, lastSeen: Date.now() - 7200000 },
+                        "q_vocab_iku": { label: "行く", reading: "iku", wrongCount: 5, correctStreak: 3, mastered: true, lastSeen: Date.now() - 86400000 },
+                        "q_vocab_neko": { label: "猫", reading: "neko", wrongCount: 18, correctStreak: 0, mastered: false, lastSeen: Date.now() - 100000 },
+                        "q_vocab_inu": { label: "犬", reading: "inu", wrongCount: 4, correctStreak: 1, mastered: false, lastSeen: Date.now() - 500000 },
+                        "q_kanji_mizu": { label: "水", reading: "mizu", wrongCount: 22, correctStreak: 0, mastered: false, lastSeen: Date.now() - 10000 }
+                      }
+                    })
+
+                    useProgressStore.setState({
+                      runsCompleted: 24,
+                      runsWon: 3,
+                      enemiesDefeated: 185,
+                      wordsMastered: 42,
+                      campaignsCompleted: ['japanese'],
+                      totalPlayTimeMinutes: 425
+                    })
+
+                    usePantheonStore.setState({
+                      runs: [{
+                        id: "run_real_1", date: Date.now() - 86400000 * 2, character: { name: "Kenji", id: "kenji" }, campaign: "japanese", floor: 4, score: 1450, victory: true, deckSize: 15, relics: 3, timeSeconds: 1200
+                      }, {
+                        id: "run_real_2", date: Date.now() - 86400000 * 5, character: { name: "Sakura", id: "sakura" }, campaign: "japanese", floor: 2, score: 450, victory: false, deckSize: 10, relics: 1, timeSeconds: 600
+                      }]
+                    })
+
                     navigate('/')
                     setOpen(false)
                   }} />
