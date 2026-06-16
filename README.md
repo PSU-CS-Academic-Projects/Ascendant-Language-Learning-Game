@@ -147,7 +147,7 @@ npm run dev
 
 ## Video Demonstration
 
-* Video Link: https://your-video-link-here.com (Optional)
+* Video Link: https://youtu.be/QgyeRsU6-4Y
 
 ---
 
